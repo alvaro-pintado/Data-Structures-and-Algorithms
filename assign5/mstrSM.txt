@@ -1,0 +1,21 @@
+*****************************************************************
+CS 302 - Assignment #5
+ZIP Code Checking Program
+
+--------------------------------------
+Zip Code Validation Statistics:
+
+Master Zip Codes Tree Statistics:
+   Tree Entries: 42522
+   Tree Height: 24
+
+Zip Codes Data File Statistics:
+   Total Zip Codes: 500
+     Good: 488
+     Bad: 12
+   Percentage Good: 97.6
+   Percentage Bad: 2.4
+   Validation - PASSED
+
+*****************************************************************
+Game Over, thank you for playing.

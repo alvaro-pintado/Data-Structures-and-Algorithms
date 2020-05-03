@@ -1,0 +1,24 @@
+*****************************************************************
+CS 302 - Assignment #7
+ZIP Code Checking Program
+
+Hash Stats
+   Current Entries Count: 42522
+   Current Hash Size: 80000
+   Hash Resize Operations: 3
+   Hash Collisions: 1882117
+--------------------------------------
+Zip Code Validation Statistics:
+
+Master Zip Codes Tree Statistics:
+
+Zip Codes Data File Statistics:
+   Total Zip Codes: 499990
+     Good: 499976
+     Bad: 14
+   Percentage Good: 99.9972
+   Percentage Bad: 0.00280006
+   Validation - PASSED
+
+*****************************************************************
+Game Over, thank you for playing.

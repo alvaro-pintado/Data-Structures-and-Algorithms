@@ -1,0 +1,17 @@
+*****************************************************************
+[1mCS 302 - Assignment #9
+Identify Connected Components[0m
+
+Total Possible Sets: 2200
+Sets: 64
+Image: 50 x 44 = 2200
+1st Largest Set Size = 1777
+1st Largest Set Prnt = 0
+2nd Largest Set Size = 354
+2nd Largest Set Prnt = 637
+Total Possible Sets: 2200
+Sets: 64
+Image: 50 x 44 = 2200
+
+*****************************************************************
+Game Over, thank you for playing.

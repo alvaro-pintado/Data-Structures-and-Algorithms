@@ -1,0 +1,116 @@
+#!/bin/bash
+#  CS 302, assignment #9 test script.
+
+# ---------------------------------------------------------
+#  Initial checks.
+#	Ensure executable file exists.
+#	Verify availability of testing support files.
+
+if [ -z $1 ]; then
+	echo "Error, must provide executable file name."
+	exit
+fi
+
+if [ ! -e $1 ] || [ ! -x $1 ]; then
+	echo "Error, unable to find $1 executable file."
+	exit
+fi
+
+if [ ! -e img0.pgm ]; then
+	echo "Error, unable to find verification files."
+	exit
+fi
+
+# ---------------------------------------------------------
+# Define script variables and function
+
+bolded=`tput bold`
+normal=`tput sgr0`
+
+pause() {
+	if [ "$1" = "skip" ]; then
+		echo
+	else
+		echo
+		echo -n "Press return to continue"
+		read
+		clear
+	fi
+}
+
+# ---------------------------------------------------------
+#  Begin testing...
+#
+clear
+echo "${bolded}CS 302 Assignment #9 Test Script${normal}"
+echo
+echo
+#
+# ---------------------------------------------------------
+#  Basic tests
+#
+echo
+echo ./testDS  >testOut.txt
+./testDS > testOut.txt
+
+if `diff testOut.txt testMstr.txt >/dev/null` ; then
+	echo "Disjoint Sets Test Successful"
+else
+	diff testOut.txt testMstr.txt
+fi
+echo
+#
+# -----
+#
+echo "Execution Testing..."
+echo
+
+for cnt in {0..11..1}
+do
+	echo
+	echo ${bolded}Test ${cnt} A${normal}
+
+	./$1 -th 20 -fv 255 -if img$cnt.pgm -of out${cnt}a.pgm > tmp$cnt.txt
+
+	if `diff tmp${cnt}.txt mstr${cnt}.txt >/dev/null` ; then
+		echo "Test $cnt Program Ouput Successful"
+	else
+		echo "Test $cnt Program Ouput Unsuccessful"
+		diff tmp${cnt}.txt mstr${cnt}.txt
+	fi
+
+	if `diff out${cnt}a.pgm mstr${cnt}a.pgm >/dev/null` ; then
+		echo "Test $cnt Image A Successful"
+	else
+		echo "Test $cnt Image A Unsuccessful"
+		cmp out${cnt}a.pgm mstr${cnt}a.pgm
+	fi
+
+	./$1 -th 20 -fv 127 -if img$cnt.pgm -of out${cnt}b.pgm > tmp$cnt.txt
+
+	if `diff out${cnt}b.pgm mstr${cnt}b.pgm >/dev/null` ; then
+		echo "Test $cnt Image B Successful"
+	else
+		echo "Test $cnt Image B Unsuccessful"
+		cmp out${cnt}b.pgm mstr${cnt}b.pgm
+	fi
+
+	./$1 -th 20 -fv 1 -if img$cnt.pgm -of out${cnt}c.pgm > tmp$cnt.txt
+
+	if `diff out${cnt}c.pgm mstr${cnt}c.pgm >/dev/null` ; then
+		echo "Test $cnt Image C Successful"
+	else
+		echo "Test $cnt Image C Unsuccessful"
+		cmp out${cnt}c.pgm mstr${cnt}c.pgm
+	fi
+
+done
+
+echo
+#
+# ---------------------------------------------------------
+#  Done, end script
+#
+echo
+echo "Test Script Done."
+

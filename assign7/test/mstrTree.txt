@@ -1,0 +1,69 @@
+----------------------------------------
+CS 302 - Assignment #7
+Hash Table Test Program.
+
+
+Hash Dump (for testing)
+----------------------------------------
+a : a : a : 
+balloon : balloon : balloon : 
+bye : bye : bye : 
+their : their : their : 
+ball : ball : ball : 
+answer : answer : answer : 
+there : there : there : 
+by : by : by : 
+any : any : any : 
+the : the : the : 
+
+
+Test Hash Zero
+
+Hash Stats
+   Current Entries Count: 10
+   Current Hash Size: 10000
+   Hash Resize Operations: 0
+   Hash Collisions: 0
+
+----------------------------------------
+
+Hash Dump (for testing)
+----------------------------------------
+
+
+Test Hash Zero
+
+Hash Stats
+   Current Entries Count: 0
+   Current Hash Size: 10000
+   Hash Resize Operations: 0
+   Hash Collisions: 0
+
+*****************************************************************
+Test Hash One
+
+Hash Stats
+   Current Entries Count: 0
+   Current Hash Size: 10000
+   Hash Resize Operations: 0
+   Hash Collisions: 1
+
+*****************************************************************
+Test Hash Two A
+
+Hash Stats
+   Current Entries Count: 456976
+   Current Hash Size: 1280000
+   Hash Resize Operations: 7
+   Hash Collisions: 35823633
+
+Test Hash Two
+
+Hash Stats
+   Current Entries Count: 0
+   Current Hash Size: 1280000
+   Hash Resize Operations: 7
+   Hash Collisions: 35823633
+
+----------------------------------------
+Game Over, thank you for playing.

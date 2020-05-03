@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	ifstream inFile("addrsSM.csv"
+char in = '\0';                       //holds character to be checked for vertical bar
+        string zip = "";                    //holds zip code to be checked
+        getline(inFile, zip);               //reads category title line to move cursor to data start
+
+        while(!inFile.eof())                //while there is data to process
+        {
+
+            zip = "";                       //reset zip string for new zip code
+
+            for(int i = 0; i <4; i++)       //move cursor to start of zip codes (5th section)
+            {
+                while(in != '|')            //new sections are denoted by '|' character
+                    inFile.get(in);         //move the cursor along
+            }
+
+            for(int i = 0; i < 5; i++)      //all zip codes from file to check are in 5 digit format
+            {
+                inFile.get(in);             //grab digit i
+                zip += in;                  //append to zip string
+            }
+
+            cout << "Zip being checked: " << zip << endl;
+
+           if(masterZipCodes.search(zip))   //search zip code to see if valid
+                goodCount++;                //if so, increase valid zip code count
+           else
+                badCount++;                 //if not, increase invalid zip code count
+           cout << "Zip has been checked: " << endl;
+           getline(inFile,zip);
+        }
+
+}
+

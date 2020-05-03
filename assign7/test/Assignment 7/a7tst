@@ -1,0 +1,111 @@
+#!/bin/bash
+# CS 302, assignment #7 test script.
+
+# ---------------------------------------------------------
+# Initial checks.
+#	Ensure executable file exists.
+#	Verify availability of testing support files.
+
+if [ -z $1 ]; then
+	echo "Error, must provide executable file name."
+	exit
+fi
+
+if [ ! -e $1 ] || [ ! -x $1 ]; then
+	echo "Error, unable to find $1 executable file."
+	exit
+fi
+#
+#
+if [ ! -e free-zipcode-database-Primary.csv ]; then
+	echo "Error, unable to find test input files."
+	exit
+fi
+#
+if [ ! -e addrsSM.csv ] || [ ! -e addrsBig.csv ]; then
+	echo "Error, unable to find test input files."
+	exit
+fi
+#
+# ---------------------------------------------------------
+# Define script variables and function
+
+bolded=`tput bold`
+normal=`tput sgr0`
+
+pause() {
+	if [ "$1" = "skip" ]; then
+		echo
+	else
+		echo
+		echo
+		echo
+		echo
+		echo
+		echo -n "Press return to continue"
+		read
+		clear
+	fi
+}
+
+# ---------------------------------------------------------
+# Display initial page
+
+clear
+echo
+echo
+echo ${bolded}Assignment 8 - Testing Script${normal}
+echo
+echo
+echo
+echo
+echo "Note, this utility assumes the program is working or very"
+echo "      close to working.  Testing on an incomplete"
+echo "      program will not be useful."
+echo
+echo
+echo
+pause $2
+clear
+#
+# Begin tests.
+#
+echo -e "\n**********************************************************************"
+echo "Test for hash table object."
+echo
+#
+./hashTest > tmpTree.txt
+#
+if `diff tmpTree.txt mstrTree.txt >/dev/null` ; then
+	echo "Hash Table Test Output Correct"
+else
+	diff tmpTree.txt mstrTree.txt
+fi
+#
+echo
+echo -e "\n**********************************************************************"
+echo "Tests for check Zips program."
+echo
+echo
+#
+./$1 -z free-zipcode-database-Primary.csv -d addrsSM.csv > tmpSM.txt
+#
+if `diff tmpSM.txt mstrSM.txt >/dev/null` ; then
+	echo "Small Addresses Data File Output Correct"
+else
+	diff tmpSM.txt mstrSM.txt
+fi
+#
+echo
+#
+./$1 -z free-zipcode-database-Primary.csv -d addrsBig.csv > tmpBig.txt
+#
+if `diff tmpBig.txt mstrBig.txt >/dev/null` ; then
+	echo "Big Addresses Data File Output Correct"
+else
+	diff tmpBig.txt mstrBig.txt
+fi
+#
+echo
+#
+

@@ -1,0 +1,19 @@
+# CS 302 Assignment #6
+# Make file for amicable numbers project
+
+OBJS	= amicableNumes.o
+CC	= g++ -Wall -pedantic -g -std=c++11 -pthread
+
+all: amicableNumes
+
+amicableNumes: amicableNumes.o
+	$(CC) -o amicableNumes
+
+amicableNumes.o: amicableNumes.cpp
+	$(CC) -c amicableNumes.cpp
+
+# -----
+# clean by removing object files.
+
+clean:
+	rm	$(OBJS)

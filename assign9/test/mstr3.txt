@@ -1,0 +1,17 @@
+*****************************************************************
+[1mCS 302 - Assignment #9
+Identify Connected Components[0m
+
+Total Possible Sets: 13020
+Sets: 966
+Image: 93 x 140 = 13020
+1st Largest Set Size = 9854
+1st Largest Set Prnt = 0
+2nd Largest Set Size = 691
+2nd Largest Set Prnt = 1185
+Total Possible Sets: 13020
+Sets: 966
+Image: 93 x 140 = 13020
+
+*****************************************************************
+Game Over, thank you for playing.

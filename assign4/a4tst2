@@ -1,0 +1,84 @@
+#!/bin/bash
+# CS 302, assignment #4 test script.
+
+# ---------------------------------------------------------
+# Initial checks.
+#	Ensure executable file exists.
+
+if [ -z $1 ]; then
+	echo "Error, must provide executable file name."
+	exit
+fi
+
+if [ ! -e $1 ] || [ ! -x $1 ]; then
+	echo "Error, unable to find $1 executable file."
+	exit
+fi
+
+# ---------------------------------------------------------
+# Define script variables and function
+
+bolded=`tput bold`
+normal=`tput sgr0`
+
+pause() {
+	if [ "$1" = "skip" ]; then
+		echo
+	else
+		echo
+		echo -n "Press return to continue"
+		read
+		clear
+	fi
+}
+
+# ---------------------------------------------------------
+# Display initial page
+
+clear
+echo
+echo
+echo ${bolded}Assignment 4 - Error Testing Utility${normal}
+echo
+echo
+echo
+echo
+echo "Note, this utility assumes the program is working or very"
+echo "      close to working.  Testing on an incomplete"
+echo "      program will not be useful."
+echo
+echo
+echo
+pause $2
+
+# ---------------------------------------------------------
+# Begin tests.
+
+echo
+echo "**********************************************************************"
+echo
+echo "Test (10x15):"
+./$1 -h 10 -w 15 -f wallsFile1.txt -p > mazeFile1.txt
+cat wallsFile1.txt | ./maze_ppm 5 | convert - maze1.jpg
+
+if `diff mazeFile1.txt mazeMstr1.txt >/dev/null` ; then
+	echo "  10x15 Maze Console Output Successful"
+else
+	diff mazeFile1.txt mazeMstr1.txt
+fi
+
+if `diff wallsFile1.txt wallsMstr1.txt >/dev/null` ; then
+	echo "  10x15 Maze Walls File Successful"
+else
+	diff wallsFile1.txt wallsMstr1.txt
+fi
+
+if `diff maze1.jpg mazeMstr1.jpg >/dev/null` ; then
+	echo "  10x15 Maze Image File Successful"
+else
+	diff maze1.jpg mazeMstr1.jpg
+fi
+
+echo
+#
+# -----
